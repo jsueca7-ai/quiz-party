@@ -1,4 +1,4 @@
-mport os, secrets, string, threading, time
+import os, secrets, string, threading, time
 from flask import Flask, jsonify, request, render_template_string
 app = Flask(__name__)
 rooms = {}
