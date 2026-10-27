@@ -23,9 +23,9 @@ questions = [
 ]
 HOME = """
 <!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiz Party</title>
-<style>
+<style>.creator{text-align:center;color:#d8d0f3;font-size:.95rem;margin:24px 0 4px}.creator strong{color:#ffd34d}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#46227c,#100a27 70%);color:white;font-family:system-ui,Arial;min-height:100vh;display:grid;place-items:center;padding:20px}.wrap{width:min(900px,100%)}h1{font-size:clamp(2.5rem,9vw,5rem);text-align:center;margin:0}h1 span{color:#ffd34d}.sub{text-align:center;color:#d8d0f3;margin:10px 0 28px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card,.panel{background:#211744;border:1px solid #59458a;border-radius:22px;padding:24px}.btn{width:100%;border:0;border-radius:12px;padding:14px;font-weight:900;font-size:1rem;background:#ffd34d;color:#190e30;cursor:pointer}.cyan{background:#37e5e5}.field{width:100%;padding:14px;border-radius:12px;border:1px solid #69569a;background:#120d27;color:white;font-size:1rem;margin:10px 0 14px}.muted{color:#c7bddf}.err{color:#ff9cc5;min-height:1.4em}
-</style><main class="wrap"><h1>QUIZ <span>PARTY!</span> 🎉</h1><div class="sub">Junta a tu equipo. Responde rápido. ¡Que gane el mejor!</div><div class="cards"><section class="card"><h2>🎤 Presentar concurso</h2><p class="muted">Crea una sala y muestra el marcador en tu Mac.</p><button class="btn" onclick="createRoom()">Crear sala</button><div id="err" class="err"></div></section><section class="card"><h2>📱 Unirme a una partida</h2><p class="muted">Introduce el código de seis caracteres.</p><form onsubmit="join(event)"><input class="field" id="code" placeholder="CÓDIGO DE SALA" maxlength="6" required><button class="btn cyan">Entrar a jugar</button></form><div id="joinErr" class="err"></div></section></div></main>
+</style><main class="wrap"><h1>QUIZ <span>PARTY!</span> 🎉</h1><div class="sub">Junta a tu equipo. Responde rápido. ¡Que gane el mejor!</div><div class="cards"><section class="card"><h2>🎤 Presentar concurso</h2><p class="muted">Crea una sala y muestra el marcador en tu Mac.</p><button class="btn" onclick="createRoom()">Crear sala</button><div id="err" class="err"></div></section><section class="card"><h2>📱 Unirme a una partida</h2><p class="muted">Introduce el código de seis caracteres.</p><form onsubmit="join(event)"><input class="field" id="code" placeholder="CÓDIGO DE SALA" maxlength="6" required><button class="btn cyan">Entrar a jugar</button></form><div id="joinErr" class="err"></div></section></div><div class="creator">✨ Creado por <strong>julzzz.zzzz</strong> ✨</div></main>
 <script>
 async function createRoom(){let r=await fetch('/api/create',{method:'POST'}),d=await r.json();location.href='/host/'+d.code+'?key='+encodeURIComponent(d.key)}
 async function join(e){e.preventDefault();let c=document.querySelector('#code').value.trim().toUpperCase(),r=await fetch('/api/check/'+c),d=await r.json();if(!r.ok){document.querySelector('#joinErr').textContent=d.error;return}location.href='/play/'+c}
@@ -146,4 +146,4 @@ def submit(code):
         return jsonify(correct=ok,points=100 if ok else 0)
 @app.get("/health")
 def health():return jsonify(status="ok")
-if __name__=="__main__":app.run(host="0.0.0.0",port=int(os.environ.get("PORT","5000")),debug=False)
+if __name__=="<div class="creator">✨ Creado por <strong>julzzz.zzzz</strong> ✨</div>__main__":app.run(host="0.0.0.0",port=int(os.environ.get("PORT","5
